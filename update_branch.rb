@@ -1,3 +1,4 @@
+require "octokit"
 
 def github_client
   @github_client ||= Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'], auto_paginate: true)
