@@ -22,6 +22,7 @@ runs:
       with:
         ruby-version: 3.0.2
         bundler-cache: true
+        bundler: Gemfile.lock
     - name: Upload to paper branch
       id: uploader
       shell: bash
