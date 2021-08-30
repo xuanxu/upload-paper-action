@@ -1,0 +1,44 @@
+name: Uploader
+description: Uploads the paper PDF file
+inputs:
+  pdf_path:
+    description: The path to the pdf file
+    required: true
+  papers_repo:
+    description: The repository containing the published and submitted papers
+    required: true
+  issue_id:
+    description: The issue number of the submission
+    required: true
+  branch_prefix:
+    description: The prefix to add to the name of all branches
+    required: false
+    default: ""
+runs:
+  using: "composite"
+  steps:
+    - name: Install Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0.2
+        bundler-cache: true
+    - name: Upload to paper branch
+      id: uploader
+      shell: bash
+      env:
+        PAPERS_REPO: ${{ inputs.papers_repo }}
+        BRANCH_PREFIX: ${{ inputs.branch_prefix }}
+        ISSUE_ID: ${{ inputs.issue_id }}
+        PDF_PATH: ${{ inputs.pdf_path }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        ruby ${{ github.action_path }}/update_branch.rb
+    - name: Print results
+      shell: bash
+      run: |
+        echo "Paper HTML URL: ${{ steps.uploader.outputs.paper_html_url }}"
+        echo "Paper download  URL: ${{ steps.uploader.outputs.paper_download_url }}"
+
+branding:
+  icon: upload
+  color: green
