@@ -36,6 +36,7 @@ runs:
         BRANCH_PREFIX: ${{ inputs.branch_prefix }}
         ISSUE_ID: ${{ inputs.issue_id }}
         PDF_PATH: ${{ inputs.pdf_path }}
+        GH_TOKEN: ${{ github.token }}
       run: |
         ruby ${{ github.action_path }}/update_branch.rb
     - name: Print results
