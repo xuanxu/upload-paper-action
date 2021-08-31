@@ -17,15 +17,17 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: cd
-      shell: bash
-      run: cd ${{ github.action_path }}
     - name: Install Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.0.2
         bundler-cache: true
         bundler: Gemfile.lock
+    - name: cd
+      shell: bash
+      run: |
+        cd ${{ github.action_path }}
+        bundle install
     - name: Upload to paper branch
       id: uploader
       shell: bash
