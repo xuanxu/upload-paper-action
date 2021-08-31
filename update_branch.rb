@@ -1,7 +1,13 @@
 require "octokit"
 
+def gh_token
+  gh_token_from_env = ENV['GITHUB_TOKEN'].to_s.strip
+  raise "!! ERROR: Invalid GitHub Token" if gh_token_from_env.empty?
+  gh_token_from_env
+end
+
 def github_client
-  @github_client ||= Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'], auto_paginate: true)
+  @github_client ||= Octokit::Client.new(access_token: gh_token, auto_paginate: true)
 end
 
 def get_main_ref(repo)
