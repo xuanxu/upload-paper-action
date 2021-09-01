@@ -29,6 +29,7 @@ runs:
     - name: cd
       shell: bash
       run: |
+        cd ${{ github.action_path }}
         bundle install
     - name: Upload to paper branch
       id: uploader
