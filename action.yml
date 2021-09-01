@@ -14,6 +14,9 @@ inputs:
     description: The prefix to add to the name of all branches
     required: false
     default: ""
+  bot_token:
+    description: The access token to be used to open PR and upload files
+    required: true
 runs:
   using: "composite"
   steps:
@@ -36,7 +39,7 @@ runs:
         BRANCH_PREFIX: ${{ inputs.branch_prefix }}
         ISSUE_ID: ${{ inputs.issue_id }}
         PDF_PATH: ${{ inputs.pdf_path }}
-        GH_TOKEN: ${{ github.token }}
+        BOT_TOKEN: ${{ inputs.bot_token }}
       run: |
         ruby ${{ github.action_path }}/update_branch.rb
     - name: Print results
