@@ -15,7 +15,7 @@ inputs:
     required: false
     default: ""
   bot_token:
-    description: The access token to be used to open PR and upload files
+    description: The access token to be used to upload files
     required: true
 runs:
   using: "composite"
@@ -29,7 +29,6 @@ runs:
     - name: cd
       shell: bash
       run: |
-        cd ${{ github.action_path }}
         bundle install
     - name: Upload to paper branch
       id: uploader
