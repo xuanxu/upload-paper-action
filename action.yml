@@ -17,6 +17,13 @@ inputs:
   bot_token:
     description: The access token to be used to upload files
     required: true
+outputs:
+  html_url:
+    description: "HTML URL for the uploaded file"
+    value: ${{ steps.uploader.outputs.paper_html_url }}
+  download_url:
+    description: "Download URL for the uploaded file"
+    value: ${{ steps.uploader.outputs.paper_download_url }}
 runs:
   using: "composite"
   steps:
