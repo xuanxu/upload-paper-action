@@ -47,5 +47,5 @@ gh_response = github_client.create_contents(papers_repo,
                                             File.open("#{pdf_path.strip}").read,
                                             branch: branch)
 
-`echo "::set-output name=paper_html_url::#{gh_response.content.html_url}"`
-`echo "::set-output name=paper_download_url::#{gh_response.content.download_url}"`
+system("echo '::set-output name=paper_html_url::#{gh_response.content.html_url}'")
+system("echo '::set-output name=paper_download_url::#{gh_response.content.download_url}'")
