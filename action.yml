@@ -32,12 +32,9 @@ runs:
       with:
         ruby-version: 3.0.2
         bundler-cache: true
+        cache-version: upload-paper
         bundler: Gemfile.lock
-    - name: cd
-      shell: bash
-      run: |
-        cd ${{ github.action_path }}
-        bundle install
+        working-directory: ${{ github.action_path }}
     - name: Upload to paper branch
       id: uploader
       shell: bash
