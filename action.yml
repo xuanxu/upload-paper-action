@@ -45,7 +45,7 @@ runs:
         PDF_PATH: ${{ inputs.pdf_path }}
         BOT_TOKEN: ${{ inputs.bot_token }}
       run: |
-        ruby ${{ github.action_path }}/update_branch.rb
+        bundle exec ruby ${{ github.action_path }}/update_branch.rb
     - name: Print results
       shell: bash
       run: |
