@@ -44,6 +44,7 @@ runs:
         ISSUE_ID: ${{ inputs.issue_id }}
         PDF_PATH: ${{ inputs.pdf_path }}
         BOT_TOKEN: ${{ inputs.bot_token }}
+        BUNDLE_GEMFILE: ${{ github.action_path }}/Gemfile
       run: |
         bundle exec ruby ${{ github.action_path }}/update_branch.rb
     - name: Print results
