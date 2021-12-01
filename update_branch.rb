@@ -11,7 +11,11 @@ def github_client
 end
 
 def get_main_ref(repo)
-  github_client.refs(repo).select { |r| r[:ref] == "refs/heads/main" }.first.object.sha
+  main_ref = github_client.refs(repo).select { |r| r[:ref] == "refs/heads/main" }.first
+  if main_ref.nil?
+    main_ref = github_client.refs(repo).select { |r| r[:ref] == "refs/heads/master" }.first
+  end
+  main_ref.object.sha
 end
 
 
