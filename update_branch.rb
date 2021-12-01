@@ -18,7 +18,6 @@ def get_main_ref(repo)
   main_ref.object.sha
 end
 
-
 issue_id = ENV["ISSUE_ID"]
 pdf_path = ENV["PDF_PATH"]
 papers_repo = ENV["PAPERS_REPO"]

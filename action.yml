@@ -51,7 +51,7 @@ runs:
       shell: bash
       run: |
         echo "Paper HTML URL: ${{ steps.uploader.outputs.paper_html_url }}"
-        echo "Paper download  URL: ${{ steps.uploader.outputs.paper_download_url }}"
+        echo "Paper download URL: ${{ steps.uploader.outputs.paper_download_url }}"
 
 branding:
   icon: upload
